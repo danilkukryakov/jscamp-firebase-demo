@@ -10,18 +10,16 @@
   </head>
   <body>
     <div class="container">
-      <h1>Firebase JS Camp Demo</h1>
-    </div>
-    <div class="container">
+      <h2>Add user</h2>
       <form class="col s12" id="user-form">
         <div class="row">
           <label class="input-field col s6">
             <span>First Name</span>
-            <input placeholder="Enter First name" type="text" name="firstName">
+            <input required placeholder="Enter First name" type="text" name="firstName">
           </label>
           <label class="input-field col s6">
             <span>Last Name</span>
-            <input placeholder="Enter last name" type="text" name="lastName">
+            <input required placeholder="Enter last name" type="text" name="lastName">
           </label>
         </div>
         <div class="row">
@@ -38,6 +36,21 @@
           Submit
         </button>      
       </form>
+    </div>
+    <div class="container">
+      <h2>Records</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
     </div>
     <script type="module" src="./index.ts"></script>
   </body>
