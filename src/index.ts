@@ -1,5 +1,7 @@
-import { getFirestore, connectFirestoreEmulator, addDoc, collection } from 'firebase/firestore';
+import { getFirestore, connectFirestoreEmulator, addDoc, collection, DocumentData } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
+
+import { User } from './models/user';
 
 // Firebase initialization.
 const app = initializeApp({
@@ -18,14 +20,20 @@ form?.addEventListener('submit', async event => {
 
   const firstName = String(formData.get('firstName'));
   const lastName = String(formData.get('lastName'));
+  const city = String(formData.get('city'));
+  const country = String(formData.get('country'));
 
-  await saveUser(firstName, lastName);
+  const user: User = {
+    firstName,
+    lastName,
+    city,
+    country,
+  };
+
+  await saveUser(user);
   formElement.reset();
 });
 
-async function saveUser(firstName: string, lastName: string): Promise<void> {
-  await addDoc(collection(db, 'users'), {
-    firstName,
-    lastName,
-  });
+function saveUser(user: User): Promise<DocumentData> {
+  return addDoc(collection(db, 'users'), user);
 }
