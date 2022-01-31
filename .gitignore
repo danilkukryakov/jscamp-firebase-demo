@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
-
-dir
 *.log
+
+# ./dir folder shouldn't be stored in git
+# dir
